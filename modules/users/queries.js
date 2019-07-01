@@ -24,6 +24,7 @@ const getUserById = (request, response) => {
 
     pool.query('SELECT * FROM table1 WHERE id = $1', [id], (error, results) => {
         if (error) {
+          
             throw error
         }
         response.status(200).json(results.rows)
@@ -31,7 +32,7 @@ const getUserById = (request, response) => {
 }
 const createUser = (request, response) => {
     const { name } = request.body
-
+    console.log(name);
     pool.query('INSERT INTO table (name) VALUES ($1)', [name], (error, results) => {
         if (error) {
             throw error
